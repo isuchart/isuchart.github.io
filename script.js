@@ -333,7 +333,7 @@ const questionData = [
         correct:"a"
 	},
     {
-        question:"จงหาจำนวน 2 จำนวนที่อยู่ระหว่าง "+a101+" และ "+a104+" ที่ทำให้ลำดับนี้เป็นลำดับเรขาคณิต",
+        question:"จงหาจำนวน 2 จำนวนที่อยู่ระหว่าง "+a101+" และ "+a104+" ที่ทำให้ลำดับนี้เป็นลำดับเรขาคณิต"+r10,
         a:a102+" , "+a103,
         b:"-"+a102+" , -"+a103,
         c:a102+" , -"+a103,
@@ -512,16 +512,20 @@ const choiceD = document.getElementById('d-text');
 
 const submitBtn = document.getElementById('submit');
 
-let no = random(0,questionData.length-1)
+ let no = random(0,questionData.length-1)
 
 let currentQuestion = no;
 let score=0;
+let kor=1;
+let d = new Date();
+let myDate = d.toLocaleString();
+
 loadQuestion();
 
 function loadQuestion(){
     checkChoice();
     const currentQuizData = questionData[currentQuestion];
-    questionEl.innerText=currentQuizData.question;
+    questionEl.innerText=kor+". "+currentQuizData.question;
     choiceA.innerText=currentQuizData.a;
     choiceB.innerText=currentQuizData.b;
     choiceC.innerText=currentQuizData.c;
@@ -539,13 +543,16 @@ submitBtn.addEventListener('click',()=>{
         if(answer === questionData[currentQuestion].correct){
             score++;
         }
-        currentQuestion++;
-//         if(currentQuestion<questionData.length){
-	   if(currentQuestion<30){
+        currentQuestion= random(0,questionData.length-1);
+        // if(currentQuestion<questionData.length){
+            if(kor<30){
+            kor++;
             loadQuestion();
             MathJax.typesetPromise()
         }else{
-            container.innerHTML="`<h2>คุณได้คะแนน ${score}/${questionData.length}</h2>`";
+            // container.innerHTML=`<h2>คุณได้คะแนน ${score}/${questionData.length}</h2>`;
+            container.innerHTML="<h2>คุณได้คะแนน `"+score+"/"+kor+"`</h2><br>"+myDate;
+            MathJax.typesetPromise()
         }
     }
 });
