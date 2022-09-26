@@ -545,7 +545,7 @@ submitBtn.addEventListener('click',()=>{
             loadQuestion();
             MathJax.typesetPromise()
         }else{
-            container.innerHTML=`<h2>คุณได้คะแนน ${score}/${questionData.length}</h2>`;
+            container.innerHTML="`<h2>คุณได้คะแนน ${score}/${questionData.length}</h2>`";
         }
     }
 });
