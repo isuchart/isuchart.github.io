@@ -514,7 +514,7 @@ const submitBtn = document.getElementById('submit');
 
 // let no = random(0,questionData.length-1)
 
-let currentQuestion = 0;
+let currentQuestion = no;
 let score=0;
 loadQuestion();
 
@@ -540,7 +540,8 @@ submitBtn.addEventListener('click',()=>{
             score++;
         }
         currentQuestion++;
-        if(currentQuestion<questionData.length){
+//         if(currentQuestion<questionData.length){
+	   if(currentQuestion<30){
             loadQuestion();
             MathJax.typesetPromise()
         }else{
