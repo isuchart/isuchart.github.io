@@ -512,7 +512,7 @@ const choiceD = document.getElementById('d-text');
 
 const submitBtn = document.getElementById('submit');
 
-// let no = random(0,questionData.length-1)
+let no = random(0,questionData.length-1)
 
 let currentQuestion = no;
 let score=0;
